@@ -54,14 +54,11 @@ class WordNet:
                 for word in recursiveHyponym(hyponym):
                     hyponymsLst.append(word)
             return hyponymsLst
-
         wordsLst = []
-
         if noun in self.wordsMap:
             synsetsWithWord = self.wordsMap[noun]
         else:
-            return noun + " is not in the WordNet!"
-        
+            return noun + " is not in the WordNet database!"
         for synset in synsetsWithWord:
             for word in synset:
                 if word not in wordsLst:
@@ -73,7 +70,7 @@ class WordNet:
 
 # Running the Program
 WordNetPy = WordNet('synsets.txt', 'hyponyms.txt')
-print("Welcome to WordNetPy.")
+print("Welcome to WordNetPy, a tool to find the hyponyms of a word!")
 while(True):
     inputWord = input('Enter a word for which you want the hyponyms: ')
     words = WordNetPy.hyponyms(inputWord)
