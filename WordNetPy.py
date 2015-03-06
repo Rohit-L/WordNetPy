@@ -73,9 +73,17 @@ WordNetPy = WordNet('synsets.txt', 'hyponyms.txt')
 print("Welcome to WordNetPy, a tool to find the hyponyms of a word!")
 while(True):
     inputWord = input('Enter a word for which you want the hyponyms: ')
-    words = WordNetPy.hyponyms(inputWord)
-    if type(words) is str:
-        print(words)
+    if inputWord == "Display All":
+        i = 1
+        for word in WordNetPy.wordsMap:
+            print(str(i) + ": " + word)
+            i += 1
+    if inputWord == "quit":
+        break;
     else:
-        for i in range(len(words)):
-            print(str(i+1) + ": " + str(words[i]))
+        words = WordNetPy.hyponyms(inputWord)
+        if type(words) is str:
+            print(words)
+        else:
+            for i in range(len(words)):
+                print(str(i+1) + ": " + str(words[i]))
